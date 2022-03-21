@@ -6,7 +6,10 @@ export default {
     state.count += payload;
   },
   deleteItem(state, payload) {
-    state.items = state.items.filter( (elem, index) => index !== payload[index] );
+    payload.forEach(elem => {
+      delete state.items[elem];
+    })
+    state.items = state.items.filter(() => true);
   },
   deleteAll(state, payload) {
     state.items = [];

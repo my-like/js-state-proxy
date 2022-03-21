@@ -19,7 +19,7 @@ export default class TodoList extends Component {
     this.element.innerHTML = `
       <ul>
         ${state.items.map((item, index) =>
-      `<li><input type="checkbox" name="check" data-id="${index}"/>${item}<button aria-label="Complete this item" class="clear" data-action="clear">✔</button><button aria-label="Cancel this item" class="cancel" data-action="cancel">❌</button></li>`
+      `<li data-id="${index}"><input type="checkbox" name="check"/>${item}<button aria-label="Complete this item" class="clear" data-action="clear">✔</button><button aria-label="Cancel this item" class="cancel" data-action="cancel">❌</button></li>`
     ).join('')}
       </ul>
     `;

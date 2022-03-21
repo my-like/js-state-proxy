@@ -15,9 +15,11 @@
 </head>
 <body>
   <div class="todo-count"></div>
-  <button class="clear-all">Clear All</button>
-  <button class="clear">Done!</button>
-  <button class="delete">Cancel..</button>
+  <div class="todo-button">
+    <button data-action="clearAll">Clear All</button>
+    <button data-action="clear">Done!</button>
+    <button data-action="cancel">Cancel</button>
+  </div>
   <div class="todo-list"></div>
   <form class="todo-form">
     <input type="text">

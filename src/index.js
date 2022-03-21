@@ -1,13 +1,15 @@
 import TodoList from './todo/components/todo-list.js'
 import TodoCount from './todo/components/done-count.js';
+import InitEvent from './todo/components/init-event.js';
 
 
-const listElem = document.querySelector('.todo-list');
+
 const formElem = document.querySelector('.todo-form');
 const inputElem = formElem.querySelector('input');
 
-let todoList = new TodoList();
-let todoCount = new TodoCount();
+new TodoList();
+new TodoCount();
+new InitEvent();
 
 formElem.addEventListener('submit', evt => {
   evt.preventDefault();
@@ -19,11 +21,4 @@ formElem.addEventListener('submit', evt => {
     inputElem.value = "";
     inputElem.focus();
   }
-});
-
-
-listElem.addEventListener( (evt) => {
-  let button = evt.target.closest('button');
-  if(!button) return;
-
 });

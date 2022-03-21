@@ -1,24 +1,44 @@
-import store from './todo/todo-state-store.js';
+import store from '../todo-state-store.js';
 
-function getPayload() {
-  return Array.from(document.querySelectorAll('.todo-list input:checked'))
-    .map(elem => parseInt(elem.dataset.id));
+function getPayload(element) {
+  return Array.from(element.querySelectorAll('input:checked'))
+    .map(elem => parseInt(elem.closest('li').dataset.id));
 };
 
-function clearAll() {
-  store.dispatch('clearAll');
-}
+export default class InitEvent {
+  constructor() {
+    this.listElem = document.querySelector('.todo-list');
+    this.btnElem  = document.querySelector('.todo-button');
+    this.init();
+  }
 
-function clearItem() {
-  store.dispatch('clearItem', getPayload());
-}
+  clearAll() {
+    store.dispatch('clearAll');
+  }
 
-function deleteItem() {
-  store.dispatch('deleteItem', getPayload());
-}
+  clear(payload) {
+    store.dispatch('clearItem', payload ?? getPayload(this.listElem));
+  }
 
-export default {
-  clearAll,
-  clearItem,
-  deleteItem
+  cancel(payload) {
+    store.dispatch('deleteItem', payload ?? getPayload(this.listElem));
+  }
+
+  listOnClick(event) {
+    let action = event.target.dataset.action;
+    if (!action) return;
+    let id     = parseInt(event.target.closest('li').dataset.id);
+    this[action]([id]);
+  }
+  
+  btnOnClick(event) {
+    let action = event.target.dataset.action;
+    if (!action) return;
+    this[action]();
+  }
+
+  init() {
+    this.listElem.onclick = this.listOnClick.bind(this);
+    this.btnElem.onclick = this.btnOnClick.bind(this);
+  }
 }
