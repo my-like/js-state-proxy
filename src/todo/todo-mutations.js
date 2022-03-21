@@ -11,7 +11,7 @@ export default {
     })
     state.items = state.items.filter(() => true);
   },
-  deleteAll(state, payload) {
+  deleteAll(state) {
     state.items = [];
   },
 }
