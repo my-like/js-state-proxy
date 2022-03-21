@@ -18,3 +18,23 @@ state를 감싸는 _state 라는 일종의 wrapper 변수에 담았다.
 2. _state 내부의 state 에 접근하기 위하여 get() 함수를 생성해서 바로 state 라는 이름으로 접근가능하게 했다.   
 단순히 state에 _state.state를 할당했더니 값이 별도로 생성될 뿐 그 때 그 때 변경되는 값에는 접근하기 힘들었다..   
 이벤트 위임을 활용하여 complete 버튼과 cancel 버튼에 이벤트를 부여했다.
+
+## 코드 구조
+```
+// 디렉터리 구조
+/src
+├──lib
+│   ├──abstractStore.js
+│   ├──component.js
+│   ├──pubsub.js
+│   └──store.js 
+└── todo
+    ├── components
+    │   ├── done-count.js
+    │   ├── todo-list.js
+    │   ├── init-event.js
+    │   └── init-state.js
+    ├── todo-actions.js
+    ├── todo-mutations.js
+    └── todo-state-store.js
+```
