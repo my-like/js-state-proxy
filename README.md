@@ -11,11 +11,11 @@ velog.io 에 올라온 JavaScript 상태관리 글을 참고하면서 만들었�
 이럴 때 설거지하기는 단순히 그냥 할 일에서 삭제처리가 된다. 완수처리가 아닌..
 
 ## 변경사항
-1. 관리하는 변수 할 일 목록 items, 이제까지 해낸 건수 count 를 state 밑에 바로 두지 않고   
-state를 감싸는 _state 라는 일종의 wrapper 변수에 담았다.   
-할 일은 complete 하는 건 목록 items 도 변경하고 동일한 트랜잭션 내에서 complete 건수 count도 증가해야 하는데   
+1. 관리하는 변수 할 일 목록 `items`, 이제까지 해낸 건수 `count` 를 `state` 밑에 바로 두지 않고   
+`state`를 감싸는 `_state` 라는 일종의 wrapper 변수에 담았다.   
+할 일을 완료하는 건 목록 `items` 도 변경하고 동일한 트랜잭션 내에서 complete 건수 `count`도 증가해야 하는데   
 목록만 변경했는데 Proxy를 통해 setTrap 이 trigger 되어서 이게 좀 불편하다고 생각했다.
-2. _state 내부의 state 에 접근하기 위하여 get() 함수를 생성해서 바로 state 라는 이름으로 접근가능하게 했다.   
+2. _state 내부의 state 에 접근하기 위하여 `getter()` 함수를 생성해서 바로 state 라는 이름으로 접근가능하게 했다.   
 단순히 state에 _state.state를 할당했더니 값이 별도로 생성될 뿐 그 때 그 때 변경되는 값에는 접근하기 힘들었다..   
 이벤트 위임을 활용하여 complete 버튼과 cancel 버튼에 이벤트를 부여했다.
 
